@@ -1,3 +1,8 @@
-<%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %>
+<%unless current_user.blank? %>
+   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  <%= current_user.inspect %>
+<%else %>
+<%= link_to "Authenticate with Google", user_google_oauth2_omniauth_authorize_path %>
+ 
+<%end%>
 
-<%# Devise prior 4.1.0: %>
