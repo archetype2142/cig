@@ -16,6 +16,7 @@ class BarcodesController < ApplicationController
 			long: permitted_params['long'],
 			concentration: 1
 		)		
+		
 		path = Rails.root.join("app", "assets", "images", "#{user.id}_barcode.png")
 		File.open(path, 'wb'){|f| f.write outputter.to_png }
 		# user.barcode.attach(filename)
