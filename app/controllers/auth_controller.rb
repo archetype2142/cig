@@ -1,3 +1,7 @@
 class AuthController < ApplicationController
-	def index; end
+	def index
+		if user_signed_in?
+			redirect_to "http://cigarettes-collect.herokuapp.com"
+		end
+	end
 end
