@@ -17,7 +17,7 @@ class BarcodesController < ApplicationController
 			concentration: 1
 		)		
 		path = Rails.root.join("app", "assets", "images", "#{user.id}_barcode.png")
-		File.open(filename, 'wb'){|f| f.write outputter.to_png }
+		File.open(path, 'wb'){|f| f.write outputter.to_png }
 		# user.barcode.attach(filename)
   	user.update!(barcode: ActionController::Base.helpers.image_path("#{user.id}_barcode.png"))
   	render json: user
