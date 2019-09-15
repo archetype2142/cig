@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root 'auth#index'
   resources :barcodes
   resources :hotspots
+  resources :bars
+  resources :users
 end

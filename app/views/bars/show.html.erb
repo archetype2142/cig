@@ -1,0 +1,15 @@
+<div class="container" style="margin-top: 25%">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			<div class="card">
+				<%= image_tag @user.barcode, class: "card-img-top" %>
+				<div class="card-body">
+					<h5 class="card-title text-center">SCAN BARCODE</h5>
+					<p class="card-text">Allow the store clerk to scan this barcode to allow them to identify you and deliver the package to recycling plants</p>
+					<a href='https://cigarettes-collect.herokuapp.com/?userId=<%=@user.id%>'class="btn btn-primary">Go Back</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

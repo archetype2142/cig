@@ -11,8 +11,11 @@ class BarcodesController < ApplicationController
   	@barcode = Barby::Code128B.new(barcode_data)	
 		outputter = Barby::PngOutputter.new(@barcode)
 		
-		# puts outputter.to_png
-		filename = "app/assets/images/#{user.id}_barcode.png"
+		Hotspot.create!(
+			lat: permitted_params['lat'], 
+			long: permitted_params['long'],
+			concentration: 1
+		)		
 		path = Rails.root.join("app", "assets", "images", "#{user.id}_barcode.png")
 		File.open(filename, 'wb'){|f| f.write outputter.to_png }
 		# user.barcode.attach(filename)
