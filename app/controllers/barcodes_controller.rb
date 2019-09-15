@@ -11,10 +11,11 @@ class BarcodesController < ApplicationController
   	@barcode = Barby::Code128B.new(barcode_data)	
 		outputter = Barby::PngOutputter.new(@barcode)
 		
-		puts outputter.to_png
+		# puts outputter.to_png
 		filename = "app/assets/images/#{user.id}_barcode.png"
+		path = Rails.root.join("app", "assets", "images", "#{user.id}_barcode.png")
 		File.open(filename, 'wb'){|f| f.write outputter.to_png }
-
+		# user.barcode.attach(filename)
   	user.update!(barcode: ActionController::Base.helpers.image_path("#{user.id}_barcode.png"))
   	render json: user
   end
