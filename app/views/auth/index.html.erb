@@ -1,8 +1,43 @@
-<%unless current_user.blank? %>
-   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-  <%= current_user.inspect %>
-<%else %>
-<%= link_to "Authenticate with Google", user_google_oauth2_omniauth_authorize_path %>
- 
+<style>
+	body::before {
+		background: url(<%= image_path('cig.jpg') %>) no-repeat center center fixed; 
+		content: "";
+		background-size: cover;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -2;
+		opacity: 0.5;
+	}
+
+	.container {
+		margin-top: 20vh;
+		height: 100%;
+		display: flex;
+  	align-items: center;
+  	justify-content: center;
+	}
+</style>
+
+<% unless current_user.blank? %>
+	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<%= current_user.inspect %>
+<% else %>
+<div class="container">
+<div class='g-sign-in-button'>
+  <div class=content-wrapper>
+  <div class='logo-wrapper'>  
+    <img src='https://developers.google.com/identity/images/g-logo.png'>
+    </div>  
+    <span class='text-container'> 
+      <span><%= link_to "Login with Google", user_google_oauth2_omniauth_authorize_path, style: "text-decoration: none; color: white;" %></span>
+    </span>
+  </div>  
+</div>
+</div>
+	
 <%end%>
 
